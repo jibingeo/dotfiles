@@ -7,7 +7,12 @@ export ZPLUG_HOME=~/.zplug
 export ZPLUG_REPO=https://github.com/zplug/zplug
 clone_repo $ZPLUG_REPO $ZPLUG_HOME
 
+# Setup vim-plug
 export VPLUG_HOME=~/.vplug/autoload
 export VPLUG_REPO=https://github.com/junegunn/vim-plug
 clone_repo $VPLUG_REPO $VPLUG_HOME
 
+# Setup tpm(https://github.com/tmux-plugins/tpm)
+export TPM_HOME=~/.tmux/plugins/tpm
+export TPM_REPO=https://github.com/tmux-plugins/tpm
+clone_repo $TPM_REPO $TPM_HOME
