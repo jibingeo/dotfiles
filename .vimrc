@@ -8,6 +8,7 @@ set expandtab
 set rtp+=~/.vplug
 call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " vim color based on
