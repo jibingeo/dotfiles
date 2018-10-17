@@ -1,14 +1,13 @@
+clone_repo() {
+  git clone "$1" "$2" 2> /dev/null || (cd "$2" ; git pull)
+}
+
 # Setup zplug(https://github.com/zplug/zplug)
 export ZPLUG_HOME=~/.zplug
 export ZPLUG_REPO=https://github.com/zplug/zplug
+clone_repo $ZPLUG_REPO $ZPLUG_HOME
 
-# https://gist.github.com/nicferrier/2277987
-LOCALREPO_VC_DIR=$ZPLUG_HOME/.git
+export VPLUG_HOME=~/.vplug/autoload
+export VPLUG_REPO=https://github.com/junegunn/vim-plug
+clone_repo $VPLUG_REPO $VPLUG_HOME
 
-if [ ! -d $LOCALREPO_VC_DIR ]
-then
-    git clone $ZPLUG_REPO $ZPLUG_HOME
-else
-    cd $ZPLUG_HOME
-    git pull
-fi
