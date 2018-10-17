@@ -1,0 +1,14 @@
+# Setup zplug(https://github.com/zplug/zplug)
+export ZPLUG_HOME=~/.zplug
+export ZPLUG_REPO=https://github.com/zplug/zplug
+
+# https://gist.github.com/nicferrier/2277987
+LOCALREPO_VC_DIR=$ZPLUG_HOME/.git
+
+if [ ! -d $LOCALREPO_VC_DIR ]
+then
+    git clone $ZPLUG_REPO $ZPLUG_HOME
+else
+    cd $ZPLUG_HOME
+    git pull
+fi
