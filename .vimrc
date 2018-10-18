@@ -1,6 +1,5 @@
 set number 
 set relativenumber
-set laststatus=0
 set termguicolors
 
 " Tabs.
@@ -15,6 +14,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
