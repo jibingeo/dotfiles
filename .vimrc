@@ -14,6 +14,7 @@ set rtp+=~/.vplug
 call plug#begin('~/.vim/plugged')
 
 Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
