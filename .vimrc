@@ -1,5 +1,8 @@
 set number 
 set relativenumber
+set laststatus=2
+set noshowmode
+
 set termguicolors
 
 " Tabs.
@@ -7,6 +10,7 @@ set tabstop=2
 set softtabstop=0
 set shiftwidth=2
 set expandtab
+set hidden
 
 " vim-plug
 set rtp+=~/.vplug
@@ -21,8 +25,13 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'isRuslan/vim-es6'
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+Plug 'pacha/vem-tabline'
 
 call plug#end()
+
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -32,16 +41,27 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 map <C-p> :Files<CR>
 
+func! s:customTheme()
+  "Custom Theme
+  highlight VertSplit ctermbg=NONE guibg=NONE
+  highlight LineNr ctermbg=NONE guibg=NONE
+  hi clear CursorLineNr
+endfunc
+
 " bash16-shell(https://github.com/chriskempson/base16-shell)
-func! s:reloadColor()
+func! s:reloadTheme()
   if filereadable(expand("~/.vimrc_background"))
     source ~/.vimrc_background
   endif
+  call s:customTheme()
 endfunc
 
-call s:reloadColor()
+call s:reloadTheme()
 
 augroup reload_color
-  autocmd!
-  autocmd FocusGained * call s:reloadColor()
+  autocmd! FocusGained * call s:reloadTheme()
+augroup END
+
+augroup CLClear
+    autocmd! ColorScheme * call s:customTheme()
 augroup END
