@@ -2,6 +2,8 @@ set number
 set relativenumber
 set termguicolors
 
+let loaded_matchparen = 1
+
 " Tabs.
 set tabstop=2
 set softtabstop=0
