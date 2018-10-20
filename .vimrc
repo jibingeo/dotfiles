@@ -34,7 +34,6 @@ Plug 'pacha/vem-tabline'
 
 call plug#end()
 
-
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
