@@ -1,7 +1,11 @@
 # https://www.johnhawthorn.com/2012/09/vi-escape-delays/
-export KEYTIMEOUT=1
 
-export MODE_INDICATOR=" "
+KEYTIMEOUT=1
+MODE_INDICATOR=" "
+
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
 
 source ~/.zplug/init.zsh
 
