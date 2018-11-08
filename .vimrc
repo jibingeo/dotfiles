@@ -39,13 +39,17 @@ map <C-n> :NERDTreeToggle<CR>
 " FZF
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
-map <C-p> :Files<CR>
+nnoremap <C-p> :Files<CR>
 
 func! s:customTheme()
   "Custom Theme
   highlight VertSplit ctermbg=NONE guibg=NONE
   highlight LineNr ctermbg=NONE guibg=NONE
   hi clear CursorLineNr
+  let g:fzf_colors = { 
+  \  'bg+': ['bg', 'Normal'],
+  \  'fg+': ['fg', 'Exception']
+  \ }
 endfunc
 
 " bash16-shell(https://github.com/chriskempson/base16-shell)
@@ -65,3 +69,4 @@ augroup END
 augroup CLClear
     autocmd! ColorScheme * call s:customTheme()
 augroup END
+
