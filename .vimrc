@@ -30,8 +30,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'isRuslan/vim-es6'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
+
+"Airline
+let g:airline_theme='base16'
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -40,6 +45,10 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 map <C-p> :Files<CR>
+
+" Motion
+nnoremap <C-e> 10<C-e>
+nnoremap <C-y> 10<C-y>
 
 func! s:customTheme()
   "Custom Theme
