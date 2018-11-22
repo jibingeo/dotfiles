@@ -33,9 +33,6 @@ Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 
-"Airline
-let g:airline_theme='ayu_mirage'
-
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
@@ -52,4 +49,10 @@ nnoremap <C-y> 10<C-y>
 set termguicolors 
 let ayucolor="mirage"
 colorscheme ayu
-
+"FZF
+let g:fzf_colors = { 	
+  \  'bg+': ['bg', 'Normal'],	
+  \  'fg+': ['fg', 'Exception']	
+  \ }
+"Airline
+let g:airline_theme='ayu_mirage'
