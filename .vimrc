@@ -12,6 +12,9 @@ set shiftwidth=2
 set expandtab
 set hidden
 
+" Clipboard
+set clipboard=unnamed
+
 " vim-plug
 set rtp+=~/.vplug
 call plug#begin('~/.vim/plugged')
@@ -30,6 +33,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ayu-theme/ayu-vim'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
