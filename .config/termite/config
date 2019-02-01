@@ -4,7 +4,7 @@ allow_bold = false
 #bold_is_bright = true
 #clickable_url = true
 #dynamic_title = true
-font = Monospace 9
+font = monaco 10
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -46,7 +46,7 @@ scrollback_lines = 10000
 
 foreground = #eeb591
 #foreground_bold = #ffffff
-background = #32303e
+background = #222732
 
 # 20% background transparency (requires a compositor)
 #background = rgba(63, 63, 63, 0.8)
