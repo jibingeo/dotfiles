@@ -1,0 +1,4 @@
+rofi.combi-modi:    window,drun,ssh
+rofi.theme:         Monokai
+rofi.font:          monaco 12
+rofi.modi:          emoji,combi,run
