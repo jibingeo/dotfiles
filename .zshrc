@@ -1,5 +1,7 @@
+source ~/.bash_profile
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
+export ZSH=$(which zsh)
 
 HISTSIZE=1000
 SAVEHIST=1000
@@ -18,6 +20,7 @@ bindkey '^j' down-line-or-history
 
 # Setup plugin
 zplug "mafredri/zsh-async", from:github
+zplug "zsh-users/zsh-syntax-highlighting"
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 if ! zplug check; then
