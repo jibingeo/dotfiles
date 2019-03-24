@@ -41,6 +41,8 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'sbdchd/neoformat'
 Plug 'Yggdroot/indentLine'
+Plug 'alexlafroscia/postcss-syntax.vim'
+Plug 'jparise/vim-graphql'
 
 call plug#end()
 
