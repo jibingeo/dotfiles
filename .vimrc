@@ -15,6 +15,11 @@ set hidden
 " Clipboard
 set clipboard=unnamed
 
+" Safewrite & Swapfile
+set nobackup
+set noswapfile
+set nowritebackup
+
 " vim-plug
 set rtp+=~/.vplug
 call plug#begin('~/.vim/plugged')
@@ -34,6 +39,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ayu-theme/ayu-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'sbdchd/neoformat'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -49,14 +56,24 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-e> 10<C-e>
 nnoremap <C-y> 10<C-y>
 
-"Theme
+" Theme
 set termguicolors 
 let ayucolor="mirage"
 colorscheme ayu
-"FZF
+
+" FZF
 let g:fzf_colors = { 	
   \  'bg+': ['bg', 'Normal'],	
   \  'fg+': ['fg', 'Exception']	
   \ }
-"Airline
+
+" Airline
 let g:airline_theme='ayu_mirage'
+
+" IntentLine
+let g:indentLine_char = '▏'
+let g:indentLine_setColors = 0
+augroup fmt
+  autocmd!
+  au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+augroup END

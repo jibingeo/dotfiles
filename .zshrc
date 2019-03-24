@@ -1,5 +1,5 @@
-export EDITOR=/usr/local/bin/nvim
-export VISUAL=/usr/local/bin/nvim
+export EDITOR=$(which nvim)
+export VISUAL=$(which nvim)
 
 HISTSIZE=1000
 SAVEHIST=1000
@@ -7,9 +7,12 @@ HISTFILE=~/.history
 
 source ~/.zplug/init.zsh
 
+bindkey -e
+
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^v' edit-command-line
+
 bindkey '^k' up-line-or-history
 bindkey '^j' down-line-or-history
 
