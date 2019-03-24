@@ -1,4 +1,3 @@
-source ~/.bash_profile
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export ZSH=$(which zsh)
