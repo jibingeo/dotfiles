@@ -40,7 +40,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ayu-theme/ayu-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'sbdchd/neoformat'
-Plug 'Yggdroot/indentLine'
 Plug 'alexlafroscia/postcss-syntax.vim'
 Plug 'jparise/vim-graphql'
 
@@ -73,9 +72,7 @@ let g:fzf_colors = {
 " Airline
 let g:airline_theme='ayu_mirage'
 
-" IntentLine
-let g:indentLine_char = '▏'
-let g:indentLine_setColors = 0
+" Neoformat
 augroup fmt
   autocmd!
   au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
