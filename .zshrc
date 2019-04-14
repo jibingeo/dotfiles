@@ -1,6 +1,7 @@
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export ZSH=$(which zsh)
+export LC_ALL=en_US.UTF-8
 
 HISTSIZE=1000
 SAVEHIST=1000
