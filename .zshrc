@@ -1,3 +1,4 @@
+source ~/.bash_profile
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export ZSH=$(which zsh)
@@ -22,6 +23,7 @@ bindkey '^j' down-line-or-history
 zplug "mafredri/zsh-async", from:github
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "zsh-users/zsh-completions"
 
 if ! zplug check; then
     zplug install

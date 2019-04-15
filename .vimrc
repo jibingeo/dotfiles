@@ -42,6 +42,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'sbdchd/neoformat'
 Plug 'alexlafroscia/postcss-syntax.vim'
 Plug 'jparise/vim-graphql'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'w0rp/ale'
+Plug 'rizzatti/dash.vim'
 
 call plug#end()
 
