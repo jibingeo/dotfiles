@@ -73,3 +73,11 @@ key_bindings:
     - { key: L,          mods: Command,             chars: "\x0C"     }
     - { key: J,          mods: Command,             chars: "\x0A"     }
     - { key: K,          mods: Command,             chars: "\x0B"     }
+    - { key: Left,       mods: Command | Shift,     chars: "\x02\x68" }
+    - { key: Right,      mods: Command | Shift,     chars: "\x02\x6C" }
+    - { key: Down,       mods: Command | Shift,     chars: "\x02\x6A" }
+    - { key: Up,         mods: Command | Shift,     chars: "\x02\x6B" }
+    - { key: Left,       mods: Command,             chars: "\x08"     }
+    - { key: Right,      mods: Command,             chars: "\x0C"     }
+    - { key: Down,       mods: Command,             chars: "\x0A"     }
+    - { key: Up,         mods: Command,             chars: "\x0B"     }
