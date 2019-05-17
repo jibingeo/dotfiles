@@ -44,6 +44,7 @@ Plug 'jparise/vim-graphql'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
 Plug 'rizzatti/dash.vim'
+Plug 'dhruvasagar/vim-zoom'
 
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -84,11 +85,16 @@ let g:fzf_colors = {
   \ }
 
 function! s:fzf_statusline()
-  setlocal statusline=──[\ fzf\ ] 
+  setlocal statusline=──[\ %1*🚨\%0*\ ] 
 endfunction
 
+" FZFD
+augroup fzf
+  autocmd!
+  autocmd FileType fzf set norelativenumber
+  autocmd User FzfStatusLine call <SID>fzf_statusline()
+augroup END
 
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 " Airline
 " let g:airline_theme='ayu_mirage'
@@ -106,7 +112,7 @@ hi StatusLineNC guibg=none guifg=#607080
 hi User1 guibg=none guifg=#fecb6e
 
 " Statusline
-set statusline=──[\ %1*%f%0*\ ]
+set statusline=──[\ %1*%f%0*\ ]%{zoom#statusline()}
 
 " Splitline
 set fillchars=stl:─
@@ -115,6 +121,20 @@ set fillchars+=stlnc:─
 augroup fmt
   autocmd!
   au WinEnter * setl statusline=
-  au WinLeave * setl statusline=──[\ %f\ ]
+  au WinLeave * setl statusline=──[\ %f\ ]%{zoom#statusline()}
 augroup END
 
+" vim-zoom
+let g:zoom#statustext='─[╳]'
+
+" NerdTree
+augroup nerdtree
+    autocmd FileType nerdtree setl modifiable statusline=
+augroup END
+
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
+  autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
+augroup END
