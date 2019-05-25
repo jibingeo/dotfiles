@@ -3,7 +3,7 @@ export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export ZSH=$(which zsh)
 export LC_ALL=en_US.UTF-8
-export FZF_DEFAULT_COMMAND='ag --nocolor -g ""' 
+export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=node_modules -g ""' 
 
 HISTSIZE=1000
 SAVEHIST=1000

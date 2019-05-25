@@ -1,8 +1,10 @@
 set number 
 set relativenumber
 set laststatus=2
+set encoding=UTF-8
 " set noshowmode
-set signcolumn=yes
+set signcolumn=yes " always show lett gutter
+set scrolloff=5 " https://vim.fandom.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen
 
 let loaded_matchparen = 1
 
@@ -45,6 +47,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
 Plug 'rizzatti/dash.vim'
 Plug 'dhruvasagar/vim-zoom'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -137,4 +140,10 @@ augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
   autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
+augroup END
+
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setl cursorline
+  au WinLeave * setlocal nocursorline
 augroup END
