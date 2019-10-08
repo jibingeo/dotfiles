@@ -86,7 +86,7 @@ if exists('+termguicolors')
 endif
 let ayucolor="mirage"
 colorscheme ayu
-hi SignColumn guibg=None
+hi SignColumn guibg=NONE
 
 " FZF
 let g:fzf_colors = { 	
@@ -117,9 +117,9 @@ augroup END
 
 
 hi VertSplit guifg=#607080
-hi StatusLine guibg=none guifg=#607080 cterm=italic
-hi StatusLineNC guibg=none guifg=#607080
-hi User1 guibg=none guifg=#fecb6e
+hi StatusLine guibg=NONE guifg=#607080 cterm=italic
+hi StatusLineNC guibg=NONE guifg=#607080
+hi User1 guibg=NONE guifg=#fecb6e
 
 " Statusline
 set statusline=──[\ %1*%f%0*\ ]%{zoom#statusline()}
