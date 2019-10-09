@@ -5,21 +5,21 @@ background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #ffb52a
+primary = #F0ffb52a
 secondary = #e60053
 alert = #bd2c40
 
 [bar/mybar]
 ;monitor = ${env:MONITOR:HDMI-1}
 ;width = 1870
-height = 22
+height = 32
 ;offset-x = 25
 ;offset-y = 31
 top = true
 radius = 0
 fixed-center = true
 
-background = #98000000
+background = #A0000000
 foreground = #FFFFFF
 
 line-size = 0
@@ -33,47 +33,41 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = monaco:size=10:style=Bold:antialias=true;2
-font-1 = Font Awesome 5 Brands:size=10;2
-font-2 = Font Awesome 5 Free:style=Regular:size=10;2
-font-3 = Font Awesome 5 Free:style=Solid:size=10;2
-font-4 = Font Awesome 5:size=10;2
-font-5 = unifont:size=10;2
-font-6 = siji:pixelsize=10;2
+#font-0 = monaco:size=12:style=Bold:antialias=true;2
+font-0 = FuraMono Nerd Font Mono:size=14;2
+font-1 = Siji:pixelsize=14;0
 
-modules-left = i3
-modules-center = xwindow
+modules-left = bspwm
+#modules-center = xwindow
 modules-right = wlan memory cpu temperature battery date
 
-[module/i3]
-type = internal/i3
+[module/bspwm]
+type = internal/bspwm
+
+; Only show workspaces defined on the same output as the bar
+; Default: true
+pin-workspaces = false
+
 format = <label-state> <label-mode>
-show-all = true
-ws-num = 6
+label-monitor = "%name%:"
+label-focused = " %icon% "
+label-empty = " %icon% "
+label-focused-background = ${colors.primary}
+label-occupied = " %icon% "
+#label-occupied-foreground = ${colors.dim}
+#label-empty =
 
-pin-workspaces = true
-enable-click = true
-enable-scroll = true
-format-padding = 0 
 ws-icon-0 = 0;
-ws-icon-1 = 1;
-ws-icon-2 = 2;
-ws-icon-3 = 3;
-ws-icon-4 = 4;
-ws-icon-5 = 5;
-ws-icon-default = 
-
-label-focused = "%icon%" 
-label-focused-foreground = #000000
-label-focused-background = #FAB148
-label-focused-padding = 1
-
-label-occupied = "%icon%"
-label-occupied-padding = 1
-label-occupied-underline = #FAB148
-
-label-unfocused = "%icon%"
-label-unfocused-padding = 1
+ws-icon-1 = 1;
+ws-icon-2 = 2;
+ws-icon-3 = 3;
+ws-icon-4 = 4;
+ws-icon-5 = 5;
+ws-icon-6 = 6;
+ws-icon-7 = 7;
+ws-icon-8 = 8;
+ws-icon-9 = 9;
+ws-icon-default = 
 
 [module/xwindow]
 type = internal/xwindow
@@ -134,11 +128,11 @@ card = systemd-backlight@backlight:acpi_video0.service
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "  "
+format-prefix = "  "
 format-prefix-foreground = #FFFFFF
 ;format-underline = #7FC4B0
 label ="%percentage%% "
-format-background = #527078
+#format-background = #527078
 
 [module/memory]
 type = internal/memory
@@ -147,7 +141,7 @@ format-prefix =  "  "
 format-prefix-foreground = #FFFFFF
 ;format-underline = #EE780B
 label ="%percentage_used%% "
-format-background = #E37C2F
+#format-background = #E37C2F
 
 [module/wlan]
 type = internal/network
@@ -184,8 +178,8 @@ time-alt = %H:%M:%S
 format-prefix = "  "
 format-foreground = #FFFFFF
 format-prefix-foreground = #FFFFFF
-;format-underline = #80B63E
-format-background = #D64447
+format-underline = #80B63E
+#format-background = #D64447
 
 label = "%date% %time% "
 
