@@ -90,7 +90,6 @@ hi SignColumn guibg=NONE
 
 " FZF
 let g:fzf_colors = { 	
-  \  'bg+': ['bg', 'Normal'],	
   \  'fg+': ['fg', 'Exception']	
   \ }
 

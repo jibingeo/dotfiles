@@ -7,12 +7,23 @@ super + Return
 	alacritty
 
 # program launcher
-super + {@space, d}
+super + d
 	rofi -show run
+
+super + space
+  ~/.config/rofi/bins/appsmenu
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
+
+# hide polybar
+super + ctrl + b
+  polybar-msg cmd hide && bspc config top_padding 0
+
+# show polybar
+super + ctrl + shift + b
+  polybar-msg cmd show && bspc config top_padding 32
 
 #
 # bspwm hotkeys
@@ -25,6 +36,9 @@ super + alt + {q,r}
 # close and kill
 super + {_,shift + }{w,q}
 	bspc node -{c,k}
+
+super + button2
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 super + m
@@ -97,7 +111,7 @@ super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-super + ctrl + space
+super + ctrl + { space, Escape }
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
