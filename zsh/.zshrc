@@ -1,9 +1,11 @@
 # source ~/.bash_profile
+export TERM=xterm-256color
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 export ZSH=$(which zsh)
 export LC_ALL=en_US.UTF-8
 export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=node_modules -g ""' 
+export FZF_DEFAULT_OPTS="--color=bg+:-1,fg+:2"
 
 # ZSH customize
 export PURE_PROMPT_SYMBOL="↪"
@@ -34,3 +36,7 @@ if ! zplug check; then
     zplug install
 fi
 zplug load
+
+if [ -x "$(command -v pfetch)" ]; then
+  pfetch | sed '/^$/d'
+fi
