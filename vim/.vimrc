@@ -86,7 +86,11 @@ if exists('+termguicolors')
 endif
 let ayucolor="mirage"
 colorscheme ayu
-hi SignColumn guibg=NONE
+
+hi SignColumn guibg=NONE cterm=NONE term=NONE
+hi Normal guibg=NONE cterm=NONE term=NONE
+hi CursorLine guibg=NONE cterm=NONE term=NONE
+hi CursorLineNr guibg=NONE cterm=NONE term=NONE
 
 " FZF
 let g:fzf_colors = { 	
@@ -146,10 +150,4 @@ augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,WinEnter * if &nu | set rnu   | endif
   autocmd BufLeave,FocusLost,WinLeave   * if &nu | set nornu | endif
-augroup END
-
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setl cursorline
-  au WinLeave * setlocal nocursorline
 augroup END
