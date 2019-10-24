@@ -69,6 +69,11 @@ call plug#end()
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 
+" NERDCommenter
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+
 " FZF
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
