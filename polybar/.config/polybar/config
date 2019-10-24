@@ -10,6 +10,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/mybar]
+override-redirect = true
 ;monitor = ${env:MONITOR:HDMI-1}
 ;width = 1870
 height = 32
@@ -22,11 +23,11 @@ fixed-center = true
 background = #A0000000
 foreground = #FFFFFF
 
-line-size = 0
+line-size = 2
 line-color = #f00
 
 border-size = 0
-border-color = #98000000
+border-color = #9800000A
 
 padding-left = 0
 padding-right = 0
