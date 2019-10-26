@@ -4,11 +4,13 @@ wid=$1
 class=$2
 instance=$3
 
-if [[ "$class" = Chromium && "$instance" != chromium ]] ; then
-	role=$(xprop -id $wid WM_WINDOW_ROLE | cut -d'=' -f2 | tr  -d ' "')
-	case "$role" in
-		"pop-up")
-			echo "focus=off state=floating"
-			;;
-	esac
+role=$(xprop -id $wid WM_WINDOW_ROLE | cut -d'=' -f2 | tr  -d ' "')
+title=$(xtitle "$wid")
+
+if [[ "$class" = Chromium ]] ; then
+  if [[ "$title" =~ ^DevTools ]] ; then
+    echo "state=tiled"
+  elif [[ "$role" = "pop-up" ]] ; then
+    echo "state=floating"
+  fi
 fi
