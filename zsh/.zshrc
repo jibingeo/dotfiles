@@ -1,16 +1,8 @@
-# source ~/.bash_profile
-export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin"
-export TERM=xterm-256color
-export EDITOR=$(which nvim)
-export VISUAL=$(which nvim)
-export ZSH=$(which zsh)
-export LC_ALL=en_US.UTF-8
-export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=node_modules -g ""' 
-export FZF_DEFAULT_OPTS="--color=bg+:-1,fg+:2"
+[[ -f ~/.profile ]] && source ~/.profile
 
 # ZSH customize
-export PURE_PROMPT_SYMBOL="↪"
-export PURE_PROMPT_VICMD_SYMBOL="↩"
+export PURE_PROMPT_SYMBOL=""
+export PURE_PROMPT_VICMD_SYMBOL=""
 
 HISTSIZE=1000
 SAVEHIST=1000
