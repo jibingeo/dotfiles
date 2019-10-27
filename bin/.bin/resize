@@ -1,0 +1,31 @@
+#! /bin/sh
+
+case "$1" in
+  +width)
+    bspc node -z right 20 0
+    if [ $? -eq 1 ];then
+      bspc node -z left 20 0
+    fi
+    ;;
+
+  -width)
+    bspc node -z right -20 0
+    if [ $? -eq 1 ];then
+      bspc node -z left -20 0
+    fi
+    ;;
+
+  +height)
+    bspc node -z bottom 0 20
+    if [ $? -eq 1 ];then
+      bspc node -z top 0 20
+    fi
+    ;;
+
+  -height)
+    bspc node -z bottom 0 -20
+    if [ $? -eq 1 ];then
+      bspc node -z top 0 -20
+    fi
+    ;;
+esac
