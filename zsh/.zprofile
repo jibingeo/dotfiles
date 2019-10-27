@@ -23,7 +23,7 @@ zplug "mafredri/zsh-async", from:github
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 
-if [ $(tty | grep pts) ] ; then
+if [ $(tty | grep -E "pts|ttys") ] ; then
   zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 fi
 
