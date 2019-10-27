@@ -1,5 +1,5 @@
 # source ~/.bash_profile
-export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin"
 export TERM=xterm-256color
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)

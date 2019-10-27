@@ -5,12 +5,9 @@ class=$2
 instance=$3
 
 role=$(xprop -id $wid WM_WINDOW_ROLE | cut -d'=' -f2 | tr  -d ' "')
-title=$(xtitle "$wid")
 
-if [[ "$class" = Chromium ]] ; then
-  if [[ "$title" =~ ^DevTools ]] ; then
-    echo "state=tiled"
-  elif [[ "$role" = "pop-up" ]] ; then
+case "$role" in
+  About|"pop-up")
     echo "state=floating"
-  fi
-fi
+    ;;
+esac

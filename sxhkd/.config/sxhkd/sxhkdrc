@@ -38,7 +38,7 @@ super + {_,shift + }{w,q}
 	bspc node -{c,k}
 
 super + button2
-	bspc node -c
+	bspc node pointed.local -c
 
 # alternate between the tiled and monocle layout
 super + m
