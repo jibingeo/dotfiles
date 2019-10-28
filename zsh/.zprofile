@@ -5,11 +5,12 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.history
 
+bindkey -e
+
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^v' edit-command-line
 
-bindkey -e
 bindkey '^k' up-line-or-history
 bindkey '^j' down-line-or-history
 
