@@ -1,84 +1,91 @@
 [colors]
-;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #F0ffb52a
-secondary = #e60053
-alert = #bd2c40
+background = #B01F2430 
+foreground = #CBCCC6
+foreground-alt = #CBCCC6
+primary = #FFCC66
+secondary = #707A8C 
+alert = #95E6CB 
 
 [bar/mybar]
-override-redirect = true
-;monitor = ${env:MONITOR:HDMI-1}
-;width = 1870
-height = 32
-;offset-x = 25
-;offset-y = 31
-top = true
-radius = 0
-fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
 
-background = #A0000000
-foreground = #FFFFFF
+override-redirect = true
+height = 32
+top = true
+fixed-center = true
 
 line-size = 2
 line-color = #f00
 
 border-size = 0
-border-color = #9800000A
 
 padding-left = 0
 padding-right = 0
 module-margin-left = 0
-module-margin-right = 0
 
-font-0 = monaco:size=12:style=Bold:antialias=true;2
-font-2 = FuraMono Nerd Font Mono:size=14;2
-font-1 = Siji:pixelsize=14;0
+font-0 = monaco:size=10:style=Regular:antialias=true;1
+font-1 = FuraMono Nerd Font Mono:size=14;3
 
-modules-left = bspwm
-#modules-center = xwindow
-modules-right = wlan memory cpu temperature battery date
+modules-left = appmenu workspaces
+modules-center = workspace-state xwindow
+modules-right = wlan memory cpu pulseaudio temperature battery date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/bspwm]
+enable-ipc = true
+
+[module/workspaces]
 type = internal/bspwm
-
-; Only show workspaces defined on the same output as the bar
-; Default: true
 pin-workspaces = false
+enable-click = true
+enable-scroll = true
+format-padding = 0
 
-format = <label-state> <label-mode>
-label-monitor = "%name%:"
-label-focused = " %icon% "
-label-empty = " %icon% "
-label-focused-background = ${colors.primary}
-label-occupied = " %icon% "
-#label-occupied-foreground = ${colors.dim}
-#label-empty =
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+;icon-4 = 5;
+ws-icon-default =   
 
-ws-icon-0 = 0;
-ws-icon-1 = 1;
-ws-icon-2 = 2;
-ws-icon-3 = 3;
-ws-icon-4 = 4;
-ws-icon-5 = 5;
-ws-icon-6 = 6;
-ws-icon-7 = 7;
-ws-icon-8 = 8;
-ws-icon-9 = 9;
-ws-icon-default = 
+format = <label-state>
+
+label-focused = %icon%
+label-focused-padding = 2
+label-focused-foreground = ${colors.primary}
+label-focused-underline = ${colors.primary}
+
+label-occupied = %icon%
+label-occupied-padding = 2
+label-occupied-foreground = ${colors.primary}
+
+label-urgent = %icon%
+label-urgent-padding = 2
+label-urgent-foreground = ${colors.alert}
+label-urgent-underline = ${colors.alert}
+
+label-empty = %icon%
+label-empty-padding = 2
+label-empty-foreground = ${colors.foreground}
+
+
+[module/workspace-state]
+type = internal/bspwm
+format = <label-mode>
+
+label-locked =  
+label-sticky = 
+label-private = 﫸
+label-marked = 
 
 [module/xwindow]
 type = internal/xwindow
-label = " %title:0:30:...% "
-;label-background = #FFF199
+label = " %title:0:50:...% "
+; label-background = #FFF199
 label-foreground = #fffff
-;label-underline = #88B455
+label-underline = #88B455
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -147,6 +154,122 @@ format-prefix-foreground = #FFFFFF
 label ="%percentage_used%% "
 #format-background = #E37C2F
 
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_02_02.0.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-muted = %{T2}ﱝ%{T-} <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+[module/alsa]
+type = internal/alsa
+
+; Soundcard to be used
+; Usually in the format hw:# where # is the card number
+; You can find the different card numbers in `/proc/asound/cards`
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+; Name of the master, speaker and headphone mixers
+; Use the following command to list available mixer controls:
+; $ amixer scontrols | sed -nr "s/.*'([[:alnum:]]+)'.*/\1/p"
+; If master, speaker or headphone-soundcard isn't the default, 
+; use `amixer -c # scontrols` instead where # is the number 
+; of the master, speaker or headphone soundcard respectively
+;
+; Default: Master
+master-mixer = Master
+
+; Optionally define speaker and headphone mixers
+; Default: none
+speaker-mixer = Speaker
+; Default: none
+headphone-mixer = Headphone
+
+; NOTE: This is required if headphone_mixer is defined
+; Use the following command to list available device controls
+; $ amixer controls | sed -r "/CARD/\!d; s/.*=([0-9]+).*name='([^']+)'.*/printf '%3.0f: %s\n' '\1' '\2'/e" | sort
+; You may also need to use `amixer -c # controls` as above for the mixer names
+; Default: none
+headphone-id = 9
+
+; Use volume mapping (similar to amixer -M and alsamixer), where the increase in volume is linear to the ear
+; Default: false
+mapped = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+label-muted = 🔇 muted
+label-muted-foreground = #66
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+; If defined, it will replace <ramp-volume> when
+; headphones are plugged in to `headphone_control_numid`
+; If undefined, <ramp-volume> will be used for both
+; Only applies if <ramp-volume> is used
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
 [module/wlan]
 type = internal/network
 interface = wlp3s0
@@ -182,7 +305,7 @@ time-alt = %H:%M:%S
 format-prefix = "  "
 format-foreground = #FFFFFF
 format-prefix-foreground = #FFFFFF
-format-underline = #80B63E
+;format-underline = #80B63E
 #format-background = #D64447
 
 label = "%date% %time% "
@@ -318,6 +441,17 @@ menu-3-0-exec = spotify &
 menu-3-1 = Vlc
 menu-3-1-exec = vlc &
 
+[module/appmenu]
+type = custom/text
+content = 
+content-background = ${colors.primary}
+content-foreground = ${colors.background}
+content-padding = 2
+
+click-left = ~/.config/rofi/bins/appsmenu
+click-right = ~/.config/rofi/bins/appsmenu
+click-middle = ~/.config/rofi/bins/appsmenu
+
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -327,6 +461,6 @@ compositing-background = screen
 
 [global/wm]
 margin-top = 0
-margin-bottom = 0
+margin-bottom = 10
 
 ; vim:ft=dosini

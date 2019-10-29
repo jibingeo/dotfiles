@@ -1,7 +1,7 @@
 export PATH="$PATH:$HOME/.bin:$HOME/.cargo/bin"
 export TERM=xterm-256color
 export EDITOR=$(which nvim)
-export terminal=$(which alacritty)
+export TERMINAL=$(which alacritty)
 export VISUAL=$(which nvim)
 export LC_ALL=en_US.UTF-8
 export ZSH=$(which zsh)
