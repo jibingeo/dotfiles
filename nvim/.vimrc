@@ -29,8 +29,14 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 " vim-plug
-set rtp+=~/.vplug
-call plug#begin('~/.vim/plugged')
+" Auto install vim-plug
+if empty(glob('~/.nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.nvim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
