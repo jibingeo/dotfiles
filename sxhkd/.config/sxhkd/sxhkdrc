@@ -10,8 +10,9 @@ super + Return
 super + d
 	rofi -show run
 
+# app launcher
 super + space
-  ~/.config/rofi/bins/appsmenu
+	rofi -show drun
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -69,7 +70,7 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-super + {_,shift + }{h,j,k,l}
+super + {_,alt + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
@@ -111,11 +112,11 @@ super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-super + ctrl + { space, Escape }
+super + ctrl + { Escape, BackSpace }
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-super + ctrl + shift + space
+super + ctrl + shift + BackSpace
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
@@ -123,7 +124,7 @@ super + ctrl + shift + space
 #
 
 # expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
+super + shift + {h,j,k,l}
 	resize { -width, +height, -height, +width }
 
 # move a floating window

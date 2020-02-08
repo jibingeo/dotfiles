@@ -7,6 +7,9 @@ set signcolumn=yes " always show lett gutter
 
 let loaded_matchparen = 1
 
+" Leader key to space
+let mapleader=' '
+
 " Tabs.
 set tabstop=2
 set softtabstop=0
@@ -40,7 +43,6 @@ set rtp+=~/.nvim
 call plug#begin('~/.nvim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
