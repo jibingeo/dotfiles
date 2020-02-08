@@ -21,20 +21,19 @@ export ZPLUG_HOME=$HOME/.zplug
 source $ZPLUG_HOME/init.zsh
 
 # Setup plugin
-zplug "mafredri/zsh-async", from:github
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-completions"
 zplug "plugins/last-working-dir", from:oh-my-zsh
-
-if [ $(tty | grep -E "pts|ttys") ] ; then
-  zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-fi
 
 if ! zplug check; then
     zplug install
 fi
 zplug load
 
-if [ -x $HOME/.bin/pfetch ]; then
-  $HOME/.bin/pfetch | sed '/^$/d' | sed '1s/^/\n/'
-fi
+autoload -Uz promptinit
+promptinit
+prompt redhat
+
+#if [ -x $HOME/.bin/pfetch ]; then
+#  $HOME/.bin/pfetch | sed '/^$/d' | sed '1s/^/\n/'
+#fi
