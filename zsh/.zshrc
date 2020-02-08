@@ -8,5 +8,7 @@ export ZSH=$(which zsh)
 export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=node_modules -g ""' 
 export FZF_DEFAULT_OPTS="--color=bg+:-1,fg+:2"
 
-source /usr/share/nvm/init-nvm.sh
+if [ -x /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
 
