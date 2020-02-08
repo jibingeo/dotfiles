@@ -43,6 +43,7 @@ set rtp+=~/.nvim
 call plug#begin('~/.nvim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
