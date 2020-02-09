@@ -1,3 +1,5 @@
+source $HOME/.bashrc
+
 # ZSH customize
 export PURE_PROMPT_SYMBOL=""
 export PURE_PROMPT_VICMD_SYMBOL=""
