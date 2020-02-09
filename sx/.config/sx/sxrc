@@ -1,0 +1,4 @@
+sxhkd &
+unclutter &
+picom &
+exec bspwm

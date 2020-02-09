@@ -14,7 +14,7 @@ export FZF_DEFAULT_OPTS="--color=bg+:-1,fg+:      2"
 export FZF_DEFAULT_COMMAND='ag --nocolor --ignore-dir=node_modules -g ""'
 export FZF_DEFAULT_OPTS="--color=bg+:-1,fg+:2"
 
-if [ -x /usr/share/nvm/init-nvm.sh ]; then
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
   source /usr/share/nvm/init-nvm.sh
 fi 
 
