@@ -86,6 +86,7 @@ let NERDTreeQuitOnOpen=1
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
+let g:NERDTreeShowHidden=1
 
 " FZF
 nnoremap <leader>f :Files<CR>

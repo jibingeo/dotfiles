@@ -14,9 +14,6 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^v' edit-command-line
 
-bindkey '^k' up-line-or-history
-bindkey '^j' down-line-or-history
-
 # Setup zplug
 export ZPLUG_HOME=$HOME/.zplug
 [[ -d $ZPLUG_HOME ]] || git clone https://github.com/zplug/zplug $ZPLUG_HOME
