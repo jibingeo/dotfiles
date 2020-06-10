@@ -8,6 +8,16 @@ role=$(xprop -id $wid WM_WINDOW_ROLE | cut -d'=' -f2 | tr  -d ' "')
 
 case "$role" in
   About|"pop-up")
-    echo "state=floating"
+    # Chrome kisok mode
+    if [ "$class" = Chromium ] ; then
+      echo "state=tiled"
+    else
+      echo "state=floating"
+    fi
     ;;
 esac
+
+#Scratch pad
+if [[ $class == sp_* ]]; then
+  echo "sticky=on state=floating locked=on"
+fi
