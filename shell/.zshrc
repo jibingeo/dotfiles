@@ -1,12 +1,13 @@
 source $HOME/.bashrc
 
 # ZSH customize
-export PURE_PROMPT_SYMBOL=""
-export PURE_PROMPT_VICMD_SYMBOL=""
+export PURE_PROMPT_SYMBOL="#"
+export PURE_PROMPT_VICMD_SYMBOL=">"
 export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.history
 export ZSH_CACHE_DIR="$HOME/.cache/zsh"
+
 
 bindkey -e
 
@@ -34,3 +35,8 @@ zplug load
 #if [ -x $HOME/.bin/pfetch ]; then
 #  $HOME/.bin/pfetch | sed '/^$/d' | sed '1s/^/\n/'
 #fi
+
+alias kakt="tmux new kak"
+alias kc="kubectl"
+
+alias idc_vpn="sshuttle -v -r jibingeo@jump.ci.ciscolabs.com --method auto 10.8.0.0/13"

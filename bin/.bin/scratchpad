@@ -1,0 +1,26 @@
+#!/bin/sh
+
+if [ -z $1 ]; then
+	echo "Usage: $0 <name of hidden scratchpad window>"
+	exit 1
+fi
+    
+pids=$(xdotool search --class ${1})
+
+if [ -z "$pids" ]; then
+  case "$1" in
+    "sp_shell")
+      alacritty --class ,sp_shell -e zsh &
+      ;;
+    "sp_node")
+      alacritty --class ,sp_node -e node &
+      ;;
+  esac
+else
+  for pid in $pids; do
+    echo "Toggle $pid"
+    bspc node $pid --flag hidden -f
+  done
+fi
+
+

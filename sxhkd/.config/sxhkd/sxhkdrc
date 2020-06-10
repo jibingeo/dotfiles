@@ -6,13 +6,16 @@
 super + Return
 	$TERMINAL
 
+# open terminal in floating mode
+super + u
+  scratchpad sp_shell
+
+super + a
+  scratchpad sp_node
+
 # program launcher
 super + d
 	rofi -show run
-
-# app launcher
-super + space
-	rofi -show drun
 
 # make sxhkd reload its configuration files:
 super + Escape

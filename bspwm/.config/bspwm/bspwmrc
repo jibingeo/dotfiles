@@ -5,8 +5,8 @@ sxhkd &
 
 bspc monitor -d 1 2 3 4 5 6 7 8 9 0
 
-bspc config border_width         2
-bspc config window_gap           2
+bspc config border_width         1
+bspc config window_gap           3
 # bspc config top_padding          32
 
 bspc config normal_border_color "#CBCCC6"
@@ -23,3 +23,7 @@ bspc rule -a Chromium desktop='^2' follow=on
 bspc rule -a firefox desktop='^3' follow=on  
 bspc rule -a Pavucontrol desktop='^4' state=floating follow=on  
 bspc rule -a Lxappearance desktop='^4' state=floating follow=on
+
+# Scratchpad
+# alacritty --class ,sp_shell -e zsh &
+# alacritty --class ,sp_python -e python &
