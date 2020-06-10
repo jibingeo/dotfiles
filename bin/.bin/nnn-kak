@@ -1,0 +1,2 @@
+nnn -p "-" > /tmp/hello.txt
+edit `cat /tmp/hello.txt`
