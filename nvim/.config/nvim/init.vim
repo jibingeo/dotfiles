@@ -43,6 +43,7 @@ set rtp+=~/.nvim
 call plug#begin('~/.nvim/plugged')
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'kevinoid/vim-jsonc'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
@@ -75,6 +76,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'Shougo/deoplete.nvim'
 " For Denite features
 "Plug 'Shougo/denite.nvim'
+Plug 'reasonml-editor/vim-reason-plus'
 
 call plug#end()
 

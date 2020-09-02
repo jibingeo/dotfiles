@@ -10,6 +10,8 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.yarn/bin"
 #GEM
 export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
+#kubectl kew
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 export TERM=xterm-256color
 export EDITOR=$(which kak)
@@ -33,3 +35,6 @@ fi
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+
+complete -C /usr/bin/vault vault
+complete -C /usr/bin/kustomize kustomize

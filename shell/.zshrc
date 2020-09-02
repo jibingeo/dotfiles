@@ -40,3 +40,22 @@ alias kakt="tmux new kak"
 alias kc="kubectl"
 
 alias idc_vpn="sshuttle -v -r jibingeo@jump.ci.ciscolabs.com --method auto 10.8.0.0/13"
+alias k="kubectl"
+alias kg="kubectl get"
+alias kd="kubectl decribe"
+alias sstart="sudo systemctl start"
+alias sstop="sudo systemctl stop"
+alias sstatus="sudo systemctl status"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault
+
+function mtouch() {
+    file=$1
+    dir=$(dirname $file)
+    mkdir -p $dir
+    touch $file
+}
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/kustomize kustomize
