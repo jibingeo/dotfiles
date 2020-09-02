@@ -1,5 +1,4 @@
 rofi.combi-modi:    window,drun,ssh
-rofi.theme:         themes/slate
 rofi.font:          monaco 12
 rofi.modi:          combi,run
 rofi.matching:      fuzzy
@@ -8,3 +7,4 @@ rofi.kb-row-up:         Up,Control+k
 rofi.kb-row-down:       Down,Control+j
 rofi.kb-accept-entry:   Return,KP_Enter
 rofi.kb-remove-to-eol:
+rofi.theme: /home/jibingeo/.config/rofi/themes/slate.rasi
