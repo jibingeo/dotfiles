@@ -3,7 +3,7 @@ set relativenumber
 set laststatus=2
 set encoding=UTF-8
 " set noshowmode
-set signcolumn=yes " always show lett gutter
+set signcolumn=no " always show lett gutter
 
 let loaded_matchparen = 1
 
@@ -49,7 +49,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'isRuslan/vim-es6'
 Plug 'tpope/vim-fugitive'
 Plug 'mustache/vim-mustache-handlebars'
@@ -66,6 +66,8 @@ Plug 'rizzatti/dash.vim'
 Plug 'dhruvasagar/vim-zoom'
 " Plug 'ryanoasis/vim-devicons'
 Plug 'takac/vim-hardtime'
+Plug 'amiralies/vim-rescript'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
@@ -77,6 +79,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " For Denite features
 "Plug 'Shougo/denite.nvim'
 Plug 'reasonml-editor/vim-reason-plus'
+" Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -96,8 +99,8 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :Files<CR>
 
 " Motion
-nnoremap <C-e> 10<C-e>
-nnoremap <C-y> 10<C-y>
+" nnoremap <C-e> 10<C-e>
+" nnoremap <C-y> 10<C-y>
 
 " Theme
 if exists('+termguicolors')
@@ -119,7 +122,24 @@ let g:fzf_colors = {
   \ }
 
 function! s:fzf_statusline()
-  setlocal statusline=──[\ %1*🚨\%0*\ ] 
+  setlocal statusline=──[🚨] 
+endfunction
+
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  if len(msgs)
+    return '─['.join(msgs, ' ').']'
+  else
+    return ''
+  endif
 endfunction
 
 " FZFD
@@ -146,7 +166,11 @@ hi StatusLineNC guibg=NONE guifg=#607080
 hi User1 guibg=NONE guifg=#fecb6e
 
 " Statusline
-set statusline=──[\ %1*%f%0*\ ]%{zoom#statusline()}
+set statusline=──[%1*%t%0*]%{zoom#statusline()}
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline+=%{StatusDiagnostic()}
+set statusline+=─[%l:%c]
+set statusline+=─%m
 
 " Splitline
 set fillchars=stl:─
@@ -155,15 +179,17 @@ set fillchars+=stlnc:─
 augroup fmt
   autocmd!
   au WinEnter * setl statusline=
-  au WinLeave * setl statusline=──[\ %f\ ]%{zoom#statusline()}
+  au WinLeave * setl statusline=──[%t]%{zoom#statusline()}
 augroup END
 
 " vim-zoom
-let g:zoom#statustext='─[╳]'
+let g:zoom#statustext='─[🌸]'
 
 " NerdTree
 augroup nerdtree
-    autocmd FileType nerdtree setl modifiable statusline=
+  autocmd FileType nerdtree setl modifiable statusline=─[NERD]─
+  autocmd FileType nerdtree hi CursorLine guibg=#607080 guifg=#fecb6e
+  autocmd FileType nerdtree noremap <buffer> l <Nop>
 augroup END
 
 
@@ -179,7 +205,6 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ ]
@@ -190,9 +215,6 @@ set updatetime=300
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -283,9 +305,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -303,3 +322,11 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+let g:lightline = {
+  \ 'colorscheme': 'jellybeans',
+  \ }
+
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-d>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-d>'    
