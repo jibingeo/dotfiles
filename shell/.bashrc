@@ -34,7 +34,3 @@ fi
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
-
-
-complete -C /usr/bin/vault vault
-complete -C /usr/bin/kustomize kustomize

@@ -59,3 +59,5 @@ function mtouch() {
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/kustomize kustomize
+complete -C /usr/bin/vault vault
+complete -C /usr/bin/kustomize kustomize
