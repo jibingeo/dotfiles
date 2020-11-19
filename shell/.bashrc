@@ -14,9 +14,9 @@ export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
 export PATH="${PATH}:${HOME}/.krew/bin"
 
 export TERM=xterm-256color
-export EDITOR=$(which kak)
+export EDITOR=$(which nvim)
 export TERMINAL=$(which alacritty)
-export VISUAL=$(which kak)
+export VISUAL=$(which nvim)
 export LC_ALL=en_US.UTF-8
 export ZSH=$(which zsh)
 export FZF_DEFAULT_COMMAND='ag --nocolor --i gnore-dir=node_modules -g ""'
@@ -32,5 +32,4 @@ fi
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '

@@ -117,6 +117,7 @@ hi CursorLine guibg=NONE cterm=NONE term=NONE
 hi CursorLineNr guibg=NONE cterm=NONE term=NONE
 
 " FZF
+let g:fzf_layout = { 'down': '40%' }
 let g:fzf_colors = { 	
   \  'fg+': ['fg', 'Exception']	
   \ }

@@ -1,5 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-background_opacity: 0.95
+background_opacity: 1
 
 window:
   padding:
@@ -16,14 +16,14 @@ font:
   bold:
     style: Italic
 
-  size: 14.0
+  size: 16.0
   offset:
     y: 2
     x: 0
 
 colors:
   primary:
-    background: '0x1F2430'
+    background: '0x212732'
     foreground: '0xCBCCC6'
 
   normal:
