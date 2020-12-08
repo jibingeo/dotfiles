@@ -1,7 +1,8 @@
 rofi.combi-modi:    window,drun,ssh
-rofi.font:          monaco 12
+rofi.font:          JetBrains Mono 14
 rofi.modi:          combi,run
 rofi.matching:      fuzzy
+rofi.lines:         6
 
 rofi.kb-row-up:         Up,Control+k
 rofi.kb-row-down:       Down,Control+j
