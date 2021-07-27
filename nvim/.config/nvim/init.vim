@@ -60,6 +60,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'sbdchd/neoformat'
 Plug 'alexlafroscia/postcss-syntax.vim'
 Plug 'jparise/vim-graphql'
+Plug 'LnL7/vim-nix'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'w0rp/ale'
 Plug 'rizzatti/dash.vim'
@@ -68,6 +69,7 @@ Plug 'dhruvasagar/vim-zoom'
 Plug 'takac/vim-hardtime'
 Plug 'amiralies/vim-rescript'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'elixir-editors/vim-elixir'
 
 Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
