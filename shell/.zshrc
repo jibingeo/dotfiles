@@ -7,6 +7,7 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.history
 export ZSH_CACHE_DIR="$HOME/.cache/zsh"
+source $HOME/.cargo/env
 
 
 bindkey -e
@@ -46,6 +47,16 @@ alias kd="kubectl decribe"
 alias sstart="sudo systemctl start"
 alias sstop="sudo systemctl stop"
 alias sstatus="sudo systemctl status"
+
+#Git alias
+alias gc="git checkout"
+alias gs="git status"
+alias gf="git diff"
+alias gf="git fetch"
+alias gstash="git stash"
+alias gpull="git pull"
+alias gpush="git push"
+alias g="git"
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault

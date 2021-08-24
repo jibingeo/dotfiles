@@ -17,6 +17,9 @@ set shiftwidth=2
 set expandtab
 set hidden
 
+" <esc> delay
+set ttimeoutlen=5
+
 " Clipboard
 set clipboard=unnamed
 
@@ -42,6 +45,7 @@ endif
 set rtp+=~/.nvim
 call plug#begin('~/.nvim/plugged')
 
+Plug 'andys8/vim-elm-syntax'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'kevinoid/vim-jsonc'
 Plug 'junegunn/fzf'
@@ -53,6 +57,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'isRuslan/vim-es6'
 Plug 'tpope/vim-fugitive'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'dart-lang/dart-vim-plugin'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 Plug 'ayu-theme/ayu-vim'
