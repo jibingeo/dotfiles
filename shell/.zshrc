@@ -7,7 +7,7 @@ export HISTSIZE=1000
 export SAVEHIST=1000
 export HISTFILE=~/.history
 export ZSH_CACHE_DIR="$HOME/.cache/zsh"
-source $HOME/.cargo/env
+source $HOME/.cargo/env 2> /dev/null
 
 
 bindkey -e
