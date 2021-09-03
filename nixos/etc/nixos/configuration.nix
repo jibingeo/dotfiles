@@ -47,6 +47,16 @@
     windowManager.herbstluftwm.enable = true;
   };
 
+  # Picom
+  services.picom = {
+    enable = true;
+    fade = true;
+    fadeDelta = 2;
+    backend = "glx";
+    inactiveOpacity = 0.95;
+    activeOpacity = 0.95;
+    vSync = true;
+  };
 
   
 
@@ -86,6 +96,7 @@
     zsh
     rofi
     feh
+    lazygit
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

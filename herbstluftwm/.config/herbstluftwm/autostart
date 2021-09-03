@@ -2,8 +2,7 @@
 
 # this is a simple config for herbstluftwm
 
-~/.fehbg 2> /dev/null
-#feh --bg-scale .wallpappers/mystic-forest.png
+feh --bg-scale .wallpappers/mystic-forest.png 2> /dev/null
 #compton --config .config/compton/compton.conf &
 
 hc() {
