@@ -2,8 +2,9 @@
 
 # this is a simple config for herbstluftwm
 
-feh --bg-scale Downloads/architecture-buildings-city-313782.jpg
-compton --config .config/compton/compton.conf &
+~/.fehbg 2> /dev/null
+#feh --bg-scale .wallpappers/mystic-forest.png
+#compton --config .config/compton/compton.conf &
 
 hc() {
     herbstclient "$@"
@@ -11,7 +12,7 @@ hc() {
 
 hc emit_hook reload
 
-xsetroot -solid '#5A8E3A'
+# xsetroot -solid '#5A8E3A'
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -20,12 +21,12 @@ hc keyunbind --all
 # if you have a super key you will be much happier with Mod set to Mod4
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
-TERMINAL=termite
+TERMINAL=alacritty
 
 
 hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
-hc keybind $Mod-Shift-c close
+hc keybind $Mod-w close
 hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
 
 #rofi
@@ -159,6 +160,11 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 
 hc set tree_style '╾│ ├└╼─┐'
 
+
+for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
+    hc pad $monitor 0
+done
+
 # unlock, just to be sure
 hc unlock
 
@@ -172,6 +178,7 @@ panel=~/.config/herbstluftwm/panel.sh
 [ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
-    hc pad $monitor 22
-    "$panel" $monitor &
+    # hc pad $monitor 22
+    # "$panel" $monitor &
 done
+

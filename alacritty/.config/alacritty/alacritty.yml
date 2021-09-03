@@ -46,11 +46,6 @@ colors:
     cyan:    '0x54ced6'
     white:   '0xffffff'
 
-shell:
-  program: /bin/zsh
-  args:
-    - --login
-
 key_bindings:
   - { key: Insert,          mods: Control,          action: Copy }
   - { key: Insert,          mods: Shift,            action: Paste }
