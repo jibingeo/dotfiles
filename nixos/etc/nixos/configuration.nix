@@ -3,17 +3,25 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+  unstable = import <unstable> {};
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config.allowUnfree = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
+
+  services.sshd.enable = true;
+  services.k3s.enable = true;
+  networking.firewall.interfaces.cni0.allowedTCPPorts = [ 6443 ];
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -29,6 +37,8 @@
   networking.interfaces.enp42s0.useDHCP = true;
   networking.interfaces.wlo1.useDHCP = true;
 
+  virtualisation.podman.enable = true;
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -43,6 +53,7 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
+    videoDrivers = [ "nvidia" ];
     desktopManager.plasma5.enable = true;
     windowManager.herbstluftwm.enable = true;
   };
@@ -58,7 +69,42 @@
     vSync = true;
   };
 
+  # Tailscale
+  services.tailscale = {
+    enable = true;
+    package = unstable.tailscale;
+  };
+
+  systemd.services.k3s.wantedBy = pkgs.lib.mkForce []; 
   
+  # create a oneshot job to authenticate to Tailscale
+  systemd.services.tailscale-up = {
+    description = "Automatic connection to Tailscale";
+
+    # make sure tailscale is running before trying to connect to tailscale
+    after = [ "network-pre.target" "tailscale.service" ];
+    wants = [ "network-pre.target" "tailscale.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    # set this service as a oneshot job
+    serviceConfig.Type = "oneshot";
+
+    # have the job run this shell script
+    script = with unstable; '' # wait for tailscaled to settle
+      sleep 2
+
+      # otherwise authenticate with tailscale
+      ${tailscale}/bin/tailscale up --accept-routes
+    '';
+  };
+
+
+  # Synergy
+  services.synergy.server = {
+    enable = true;
+    configFile = "/home/jibingeo/synergy.conf";
+  };
+  networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 28400 ];
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -97,6 +143,9 @@
     rofi
     feh
     lazygit
+    nodejs
+    kubectl
+    kubectx
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
