@@ -19,15 +19,23 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
+  # SSH Server
   services.sshd.enable = true;
-  services.k3s.enable = true;
-  networking.firewall.interfaces.cni0.allowedTCPPorts = [ 6443 ];
+
+  # k3s
+  services.k3s = {
+    enable = true;
+    extraFlags = "--no-deploy traefik";
+  };
+  # Disable k3s autostart
+  systemd.services.k3s.wantedBy = pkgs.lib.mkForce []; 
+  networking.firewall.interfaces.cni0.allowedTCPPorts = [ 6443 10250 ];
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Asia/Kolkata";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -37,6 +45,7 @@ in
   networking.interfaces.enp42s0.useDHCP = true;
   networking.interfaces.wlo1.useDHCP = true;
 
+  # Podman 
   virtualisation.podman.enable = true;
 
   # Configure network proxy if necessary
@@ -75,11 +84,9 @@ in
     package = unstable.tailscale;
   };
 
-  systemd.services.k3s.wantedBy = pkgs.lib.mkForce []; 
-  
-  # create a oneshot job to authenticate to Tailscale
+  # Tailscale oneshot job to enable subroute
   systemd.services.tailscale-up = {
-    description = "Automatic connection to Tailscale";
+    description = "Tailscale up service";
 
     # make sure tailscale is running before trying to connect to tailscale
     after = [ "network-pre.target" "tailscale.service" ];
@@ -90,10 +97,11 @@ in
     serviceConfig.Type = "oneshot";
 
     # have the job run this shell script
-    script = with unstable; '' # wait for tailscaled to settle
+    script = with unstable; '' 
+      # wait for tailscaled to settle
       sleep 2
 
-      # otherwise authenticate with tailscale
+      # tailscale up with subroute
       ${tailscale}/bin/tailscale up --accept-routes
     '';
   };
@@ -104,7 +112,7 @@ in
     enable = true;
     configFile = "/home/jibingeo/synergy.conf";
   };
-  networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 28400 ];
+  networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 24800 ];
 
   # Configure keymap in X11
   # services.xserver.layout = "us";
@@ -133,7 +141,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim 
     wget
     alacritty
     firefox
