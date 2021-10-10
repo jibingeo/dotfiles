@@ -29,7 +29,7 @@ hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm 
 hc keybind $Mod-m spawn ~/.bin/scratchpad.sh
 
 #rofi
-hc keybind $Mod-d spawn rofi -show run
+hc keybind $Mod-d spawn rofi -show drun -modi run,drun
 
 # basic movement
 # focusing clients
@@ -163,7 +163,7 @@ hc set tree_style '╾│ ├└╼─┐'
 
 
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    hc pad $monitor 0
+    hc pad $monitor 3 3 3 3
 done
 
 # unlock, just to be sure

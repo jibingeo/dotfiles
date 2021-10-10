@@ -14,6 +14,8 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+  environment.variables.XCURSOR_SIZE = "16";
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -76,6 +78,10 @@ in
     inactiveOpacity = 0.95;
     activeOpacity = 0.95;
     vSync = true;
+    opacityRules = [
+      "100:fullscreen"
+      "95:!fullscreen"
+    ];
   };
 
   # Tailscale
@@ -126,7 +132,13 @@ in
   hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput = {
+    enable = true;
+    touchpad = {
+      naturalScrolling = true;
+      tapping = true;
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jibingeo = {
