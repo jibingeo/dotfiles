@@ -1,3 +1,0 @@
-#!/bin/sh
-#
-chromium --app=https://meet.google.com > /dev/null 2>/dev/null &

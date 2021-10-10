@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=chromium --app=https://discord.com/app
+Type=Application
+Categories=Chat
+Name=Discord 
