@@ -14,8 +14,6 @@ return require('packer').startup(function(use)
     },
   }
   require("plugins/nvim-tree")
-
-  --plugins
 end)
 	
 	
