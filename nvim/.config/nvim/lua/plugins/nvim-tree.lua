@@ -15,6 +15,7 @@ vim.opt.termguicolors = true
 -- setup with some options
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",
+	hijack_cursor = true,
 	actions = {
 		open_file = {
 			quit_on_open = true,
@@ -22,8 +23,29 @@ require("nvim-tree").setup({
 	},
 	renderer = {
 		highlight_git = true,
+		indent_markers = {
+			enable = false,
+		},
 		icons = {
 			git_placement = "after",
+			show = {
+				file = false,
+				folder = false,
+				folder_arrow = true,
+				git = true,
+				modified = true,
+			},
+		},
+	},
+	view = {
+		hide_root_folder = true,
+		signcolumn = "no",
+		float = {
+			enable = true,
+			open_win_config = {
+				row = 0,
+				col = 0,
+			},
 		},
 	},
 })
