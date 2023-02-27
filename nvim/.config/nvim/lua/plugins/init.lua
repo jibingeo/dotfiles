@@ -17,4 +17,6 @@ return require("packer").startup(function(use)
 	-- Lualine
 	require("plugins/lualine")
 
+	-- incline
+	require("plugins/incline")
 end)
