@@ -9,7 +9,6 @@ require("packer").use({
 local api = require("nvim-tree.api")
 
 local on_attach = function(bufnr)
-  
   -- helper
 	local opts = function(desc)
 		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
