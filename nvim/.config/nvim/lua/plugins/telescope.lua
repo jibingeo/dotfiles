@@ -1,14 +1,44 @@
 require("packer").use({
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.1",
-	requires = { { "nvim-lua/plenary.nvim" } },
+	requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-file-browser.nvim" },
 })
 
-require("telescope").setup({})
+local telescope = require("telescope")
+local builtin = require("telescope.builtin")
+local actions = require("telescope.actions")
+
+telescope.setup({
+	defaults = {
+		mappings = {
+			i = {
+				["<esc>"] = actions.close,
+			},
+		},
+	},
+})
+
+--extensions
+telescope.load_extension("file_browser")
+
+local file_browser = telescope.extensions.file_browser
 
 -- keybindings
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>b", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+
+vim.keymap.set("n", "<leader>f", function()
+	file_browser.file_browser({
+    path = "%:p:h",
+    selected_buffer = true
+  })
+end, {})
+
+vim.keymap.set("n", "<leader>g", builtin.live_grep, {})
+
+vim.keymap.set("n", "<leader>b", function()
+	builtin.buffers({
+		sort_lastused = true,
+	})
+end, {})
+
+vim.keymap.set("n", "<leader>h", builtin.help_tags, {})
