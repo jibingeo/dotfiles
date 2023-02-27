@@ -11,6 +11,10 @@ return require("packer").startup(function(use)
 	-- Telescope
 	require("plugins/telescope")
 
-  -- Formatter
+	-- Formatter
 	require("plugins/formatter")
+
+	-- Lualine
+	require("plugins/lualine")
+
 end)

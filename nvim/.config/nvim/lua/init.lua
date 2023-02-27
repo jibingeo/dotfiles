@@ -11,4 +11,7 @@ vim.opt.tabstop = TAB_WIDTH
 vim.opt.shiftwidth = TAB_WIDTH
 vim.opt.expandtab = true
 
+-- hide command line
+vim.opt.cmdheight = 0
+
 require("plugins")
