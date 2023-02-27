@@ -5,23 +5,17 @@ require("packer").use({
 	},
 })
 
--- disable netrw at the very start of your init.lua (strongly advised)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
 
 local api = require("nvim-tree.api")
 
 local on_attach = function(bufnr)
+  
+  -- helper
 	local opts = function(desc)
 		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 	end
 
-	-- Default mappings. Feel free to modify or remove as you wish.
-	--
-	-- BEGIN_DEFAULT_ON_ATTACH
+  -- default bindings
 	vim.keymap.set("n", "<C-]>", api.tree.change_root_to_node, opts("CD"))
 	vim.keymap.set("n", "<C-e>", api.node.open.replace_tree_buffer, opts("Open: In Place"))
 	vim.keymap.set("n", "<C-k>", api.node.show_info_popup, opts("Info"))
@@ -74,11 +68,8 @@ local on_attach = function(bufnr)
 	vim.keymap.set("n", "Y", api.fs.copy.relative_path, opts("Copy Relative Path"))
 	vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
 	vim.keymap.set("n", "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
-	-- END_DEFAULT_ON_ATTACH
 
-	-- Mappings migrated from view.mappings.list
-	--
-	-- You will need to insert "your code goes here" for any mappings with a custom action_cb
+  -- user bindings
 	vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
 	vim.keymap.set("n", "h", api.node.navigate.parent_close, opts("Close Directory"))
 	vim.keymap.set("n", "c", api.tree.close, opts("Close"))
@@ -86,7 +77,7 @@ local on_attach = function(bufnr)
 	vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse"))
 end
 
--- setup with some options
+-- setup
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",
 	hijack_cursor = true,
@@ -115,10 +106,12 @@ require("nvim-tree").setup({
 			enable = true,
 			open_win_config = function()
 				local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+				local screen_w = vim.opt.columns:get() 
 				return {
 					border = "rounded",
 					relative = "editor",
 					row = 0,
+					-- col = screen_w - 30, -- right align
 					col = 0,
 					width = 30,
 					height =  screen_h,
