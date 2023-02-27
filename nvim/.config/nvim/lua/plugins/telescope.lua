@@ -21,13 +21,13 @@ telescope.setup({
 --extensions
 telescope.load_extension("file_browser")
 
-local file_browser = telescope.extensions.file_browser
+local file_browser = telescope.extensions.file_browser.file_browser
 
 -- keybindings
 vim.keymap.set("n", "<C-p>", builtin.find_files, {})
 
 vim.keymap.set("n", "<leader>f", function()
-	file_browser.file_browser({
+	file_browser({
     path = "%:p:h",
     selected_buffer = true
   })

@@ -19,4 +19,7 @@ return require("packer").startup(function(use)
 
 	-- incline
 	require("plugins/incline")
+
+	-- smart split
+	require("plugins/smart-splits")
 end)
