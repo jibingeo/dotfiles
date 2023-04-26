@@ -5,6 +5,9 @@ vim.wo.relativenumber = true
 -- leaderkey
 vim.g.mapleader = " "
 
+-- clipboard
+vim.opt.clipboard = "unnamedplus"
+
 -- space and tab
 local TAB_WIDTH = 2
 vim.opt.tabstop = TAB_WIDTH
