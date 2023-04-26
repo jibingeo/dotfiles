@@ -22,4 +22,13 @@ return require("packer").startup(function(use)
 
 	-- smart split
 	require("plugins/smart-splits")
+
+	-- comment.nvim
+	require("plugins/comment")
+
+	-- elixir.nvim
+	require("plugins/elixir")
+
+	-- nvim-treesitter
+	require("plugins/nvim-treesitter")
 end)
