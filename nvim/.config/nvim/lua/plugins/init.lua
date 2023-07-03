@@ -45,6 +45,9 @@ return require("packer").startup(function(use)
 	-- nvim-treesitter
 	require("plugins/nvim-treesitter")
   
+	-- autoclose
+	require("plugins/autoclose")
+
   -- boostrap
   if packer_bootstrap then
     require('packer').sync()
