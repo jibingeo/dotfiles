@@ -1,8 +1,8 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","cpu","memory","custom/media","tray"],
-	"modules-center": ["river/tags"],
-	"modules-right": ["custom/updates","custom/wallpaper","backlight","pulseaudio","clock", "battery","custom/power"],
+  "modules-left": ["custom/launcher","wlr/workspaces"], "modules-center":
+  ["hyprland/window"],
+	"modules-right": ["cpu", "memory","custom/media","tray","custom/updates","custom/wallpaper","pulseaudio","clock","custom/power"],
 	
 	"pulseaudio": {
 		"tooltip": false,
@@ -14,7 +14,41 @@
 			"default": ["", "", ""]
 		}
 	},
-
+  "wlr/workspaces": {
+  "format": "{icon}",
+  "on-click": "activate",
+  "format-icons": {
+    "1": "",
+    "2": "",
+    "3": "",
+    "4": "",
+    "5": "",
+    "urgent": "",
+    "active": "",
+    "default": ""
+  },
+  "sort-by-number": true
+},
+"hyprland/workspaces": {
+	"format": "{id}: {icon}",
+	"format-icons": {
+		"1": "",
+		"2": "",
+		"3": "",
+		"4": "",
+		"5": "",
+		"active": "",
+		"default": ""
+	},
+},
+"hyprland/window": {
+    "format": "👉 {}",
+    "rewrite": {
+        "(.*) — Mozilla Firefox": "🌎 $1",
+        "(.*) - fish": "> [$1]"
+    },
+    "separate-outputs": true
+},
     "river/tags": {
 		"num-tags": 6
     },
@@ -71,15 +105,6 @@
         "escape": true,
         "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
         "on-click": "playerctl play-pause"
-    },
-    "custom/launcher":{
-        "format": " ",
-        "on-click": "rofi -show drun",
-        "on-click-right": "killall rofi"
-    },
-    "custom/power":{
-        "format": " ",
-        "on-click": "bash ~/.config/rofi/leave/leave.sh",
     },
     "custom/updates":{
         "format": "{} Update(s)",
