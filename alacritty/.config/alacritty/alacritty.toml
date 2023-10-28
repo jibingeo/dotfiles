@@ -1,0 +1,56 @@
+[colors.bright]
+black = "0x666666"
+blue = "0x7aa6da"
+cyan = "0x54ced6"
+green = "0x9ec400"
+magenta = "0xb77ee0"
+red = "0xff3334"
+white = "0xffffff"
+yellow = "0xe7c547"
+
+[colors.normal]
+black = "0x000000"
+blue = "0x7aa6da"
+cyan = "0x70c0ba"
+green = "0xb9ca4a"
+magenta = "0xc397d8"
+red = "0xd54e53"
+white = "0xeaeaea"
+yellow = "0xe6c547"
+
+[colors.primary]
+background = "0x212732"
+foreground = "0xCBCCC6"
+
+[font]
+size = 15.0
+
+[font.bold]
+style = "Italic"
+
+[font.normal]
+family = "JetBrains Mono NL"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Insert"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Insert"
+mods = "Shift"
+
+[scrolling]
+multiplier = 4
+
+[shell]
+program = "fish"
+
+[window]
+dynamic_padding = true
+
+[window.padding]
+x = 6
+y = 6
