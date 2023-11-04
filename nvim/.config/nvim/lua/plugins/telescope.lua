@@ -1,6 +1,6 @@
 require("packer").use({
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.1",
+	tag = "0.1.4",
 	requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-file-browser.nvim" },
 })
 
