@@ -8,12 +8,18 @@ require("formatter").setup({
 	-- Enable or disable logging
 	logging = true,
 	filetype = {
+    javascript = {
+	    require("formatter.filetypes.javascriptreact").prettier,
+    },
+    javascriptreact = {
+	    require("formatter.filetypes.javascriptreact").prettier,
+    },
 		-- Formatter configurations for filetype "lua" go here
 		-- and will be executed in order
 		lua = {
 			-- "formatter.filetypes.lua" defines default configurations for the
 			-- "lua" filetype
-			require("formatter.filetypes.lua").stylua,
+		require("formatter.filetypes.lua").stylua,
 		},
 
 		javascript = {
