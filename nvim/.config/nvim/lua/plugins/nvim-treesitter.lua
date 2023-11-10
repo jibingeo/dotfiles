@@ -7,7 +7,7 @@ require("packer").use({
 })
 
 require("nvim-treesitter.configs").setup({
-  ensure_installed = "all",
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "tsx", "typescript" },
 	highlight = {
 		enable = true,
     additional_vim_regex_highlighting = false,

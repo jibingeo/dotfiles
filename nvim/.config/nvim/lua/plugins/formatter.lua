@@ -21,5 +21,18 @@ require("formatter").setup({
 			-- "lua" filetype
 		require("formatter.filetypes.lua").stylua,
 		},
+
+		javascript = {
+			-- "formatter.filetypes.lua" defines default configurations for the
+			-- "lua" filetype
+			require("formatter.filetypes.javascript").prettier,
+		},
+
+		json = {
+			-- "formatter.filetypes.lua" defines default configurations for the
+			-- "lua" filetype
+			require("formatter.filetypes.javascript").prettier,
+		},
+    
 	},
 })
